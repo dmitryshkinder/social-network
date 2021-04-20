@@ -3,34 +3,20 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import Loader from '@/components/blocks/global/Loader'
 import SecuredRoute from '@/components/wrappers/SecuredRoute'
-import {
-  successStrategyExample,
-  failureStrategyExample,
-} from '@/routerPermissions'
 
-import { LANDING_PAGE_PATH } from '@/constants'
+import { AUTH_PAGE_PATH } from '@/constants'
 
-const LandingPage = React.lazy(() => import('@/components/pages/Landing'))
 const NotFoundPage = React.lazy(() => import('@/components/pages/NotFound'))
+const AuthPage = React.lazy(() => import('@/components/pages/Auth'))
+const ClubmatesPage = React.lazy(() => import('@/components/pages/Clubmates'))
 
 export default () => (
   <Router>
     <React.Suspense fallback={<Loader />}>
       <Switch>
-        <Route
-          exact
-          path={LANDING_PAGE_PATH}
-          component={LandingPage} />
+        <Route exact path={AUTH_PAGE_PATH} component={AuthPage} />
 
-        <SecuredRoute
-          path="/success"
-          component={LandingPage}
-          strategy={successStrategyExample} />
-
-        <SecuredRoute
-          path="/failure"
-          component={LandingPage}
-          strategy={failureStrategyExample} />
+        <SecuredRoute path="/" component={ClubmatesPage} />
 
         <Route path="*" component={NotFoundPage} />
       </Switch>

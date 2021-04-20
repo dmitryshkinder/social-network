@@ -1,5 +1,12 @@
-// Place here Action types constants
-
-export const DEMO_ACTION = 'DEMO_ACTION'
-
 export const SET_LOCALE = 'SET_LOCALE'
+
+export const SIGN_IN_EMAIL_AUTH = 'SIGN_IN_EMAIL_AUTH'
+export const SIGN_OUT = 'SIGN_OUT'
+export const SIGNOUT_SUCCESS = 'SIGNOUT_SUCCESS'
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+
+export const REGISTER_REQUEST = 'REGISTER_REQUEST'
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
+
+export const CLEAR_ERRORS = 'CLEAR_ERRORS'
+export const CREATE_ERROR = 'CREATE_ERROR'
