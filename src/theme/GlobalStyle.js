@@ -6,9 +6,10 @@ export default createGlobalStyle`
   body {
     margin: 0;
     background-color: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.font};
+    color: ${props => props.theme.colors.fontLight};
     font-weight: ${props => props.theme.fontWeights.normal};
-    font-family: ${props => props.theme.fontFamily}
+    font-family: ${props => props.theme.fontFamily};
+    box-sizing: border-box;
   }
 
   main {
@@ -16,5 +17,28 @@ export default createGlobalStyle`
     padding-right: ${props => props.theme.unit.double};
     padding-top: ${props => props.theme.unit.quadriple};
     padding-bottom: ${props => props.theme.unit.quadriple};
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p {
+    margin-bottom: ${props => props.theme.unit.single}
+  }
+
+  p {
+    font-size: ${props => props.theme.fontSizes.normal}
+    font-weight: ${props => props.theme.fontWeights.normal};
+  }
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  h2 {
+    font-size: ${props => props.theme.fontSizes.weryBig}
   }
 `

@@ -1,3 +1,2 @@
-// Place here Paths constants (router paths)
-
-export const LANDING_PAGE_PATH = '/'
+export const AUTH_PAGE_PATH = '/auth'
+export const HOME_PAGE_PATH = '/'
