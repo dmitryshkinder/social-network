@@ -36,6 +36,11 @@ export default createGlobalStyle`
   a {
     text-decoration: none;
     cursor: pointer;
+    color: ${props => props.theme.colors.fontLight}
+  }
+
+  a:hover {
+    color: ${props => props.theme.colors.fontLight}
   }
 
   h2 {

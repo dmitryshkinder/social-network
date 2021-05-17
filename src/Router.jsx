@@ -4,11 +4,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Loader from '@/components/blocks/global/Loader'
 import SecuredRoute from '@/components/wrappers/SecuredRoute'
 
-import { AUTH_PAGE_PATH } from '@/constants'
+import { AUTH_PAGE_PATH, FILLING_PROFILE_PATH } from '@/constants'
 
 const NotFoundPage = React.lazy(() => import('@/components/pages/NotFound'))
 const AuthPage = React.lazy(() => import('@/components/pages/Auth'))
 const ClubmatesPage = React.lazy(() => import('@/components/pages/Clubmates'))
+const FillingProfilePage = React.lazy(() => import('@/components/pages/FillingProfile'))
 
 export default () => (
   <Router>
@@ -16,7 +17,9 @@ export default () => (
       <Switch>
         <Route exact path={AUTH_PAGE_PATH} component={AuthPage} />
 
-        <SecuredRoute path="/" component={ClubmatesPage} />
+        <SecuredRoute exact path="/" component={ClubmatesPage} />
+
+        <SecuredRoute exact path={FILLING_PROFILE_PATH} component={FillingProfilePage} />
 
         <Route path="*" component={NotFoundPage} />
       </Switch>
