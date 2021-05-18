@@ -5,4 +5,6 @@ export default {
   access_denied: 'Для доступа к этой странице необходимо авторизоваться',
   return_home: 'Вернуться на главную страницу',
   page_not_found: 'Страница не найдена',
+  header_menu_settings_link: 'Настройки',
+  header_menu_log_out_link: 'Выйти',
 }

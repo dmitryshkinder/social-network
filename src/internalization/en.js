@@ -5,4 +5,6 @@ export default {
   access_denied: 'You have no access to open this page',
   return_home: 'Return Home',
   page_not_found: 'Requested page is not found',
+  header_menu_settings_link: 'Settings',
+  header_menu_log_out_link: 'Log out',
 }
