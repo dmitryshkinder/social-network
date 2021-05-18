@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-import { signInEmailAuth, registerRequest, clearErrors } from '@/actions'
+import { signInEmailAuth, registerRequest } from '@/actions'
 import { HOME_PAGE_PATH } from '@/constants'
 import RegisterForm from '@/components/forms/Register'
 import LoginForm from '@/components/forms/Login'
@@ -23,17 +23,8 @@ import logo from './img/logo.png'
 function AuthPage () {
   const dispatch = useDispatch()
   const auth = useSelector(state => state.firebase.auth)
-  const error = useSelector(state => state.error.errorMessage)
-  const [isRegisterTypeForm, setTypeForm] = useState(true)
-  const [alert, setAlert] = useState({ show: false })
-  const clearErrorsAction = clearErrors()
 
-  useEffect(() => {
-    if (error) {
-      setAlert({ show: true, severity: 'error', text: error })
-      dispatch(clearErrorsAction)
-    }
-  }, [error, dispatch, clearErrorsAction])
+  const [isRegisterTypeForm, setTypeForm] = useState(true)
 
   const onSwapTypeForm = () => {
     setTypeForm(!isRegisterTypeForm)
@@ -47,7 +38,9 @@ function AuthPage () {
     dispatch(registerRequest(values))
   }
 
-  if (auth.uid) return <Redirect to={HOME_PAGE_PATH} />
+  if (auth.uid) {
+    return <Redirect to={HOME_PAGE_PATH} />
+  }
 
   return (
     <Main>
@@ -69,17 +62,12 @@ function AuthPage () {
         <SignLink>
           {isRegisterTypeForm ? (
             <p>
-              У вас уже есть аккаунт?{' '}
-              <a onClick={onSwapTypeForm}>
-                Войдите
-              </a>
+              У вас уже есть аккаунт? <a onClick={onSwapTypeForm}>Войдите</a>
             </p>
           ) : (
             <p>
               У вас ещё нет аккаунта?{' '}
-              <a onClick={onSwapTypeForm}>
-                Зарегистрируйтесь
-              </a>
+              <a onClick={onSwapTypeForm}>Зарегистрируйтесь</a>
             </p>
           )}
         </SignLink>
