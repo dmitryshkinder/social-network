@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-import { signInEmailAuth, registerRequest, getUserRequest } from '@/actions'
-import { HOME_PAGE_PATH, FILLING_PROFILE_PATH } from '@/constants'
+import { signInEmailAuth, registerRequest } from '@/actions'
+import { HOME_PAGE_PATH } from '@/constants'
 import RegisterForm from '@/components/forms/Register'
 import LoginForm from '@/components/forms/Login'
 
@@ -23,7 +23,7 @@ import logo from './img/logo.png'
 function AuthPage () {
   const dispatch = useDispatch()
   const auth = useSelector(state => state.firebase.auth)
-  const user = useSelector(state => state.user)
+
   const [isRegisterTypeForm, setTypeForm] = useState(true)
 
   const onSwapTypeForm = () => {
@@ -38,14 +38,8 @@ function AuthPage () {
     dispatch(registerRequest(values))
   }
 
-  // dispatch(getUserRequest(auth.uid))
-
-  // if (!user.name) {
-  //   return <Redirect to={HOME_PAGE_PATH} />
-  // }
-
   if (auth.uid) {
-    return <Redirect to={FILLING_PROFILE_PATH} />
+    return <Redirect to={HOME_PAGE_PATH} />
   }
 
   return (

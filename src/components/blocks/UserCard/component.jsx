@@ -1,10 +1,12 @@
 import React from 'react'
 import pt from 'prop-types'
+import { Link } from 'react-router-dom'
 
 import Chip from '@material-ui/core/Chip'
 import Box from '@material-ui/core/Box'
 import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
 
 import Card from './styles'
 
@@ -24,12 +26,15 @@ const UserCard = ({ user }) => {
             <Box variant="body2" mb={2}>
               {user.aboutMe}
             </Box>
-            <Box display="flex" align="center">
+            <Box display="flex" align="center" mb={2}>
               {user.skills.map(skill => (
                 <Box mr={1} key={skill.key}>
                   <Chip label={skill.label} />
                 </Box>
               ))}
+            </Box>
+            <Box>
+              <Button color="primary">Открыть профиль</Button>
             </Box>
           </Box>
         </Box>

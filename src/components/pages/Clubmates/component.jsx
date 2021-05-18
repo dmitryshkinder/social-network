@@ -1,19 +1,30 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
-import { getUsersRequest } from '@/actions'
+import { FILLING_PROFILE_PATH } from '@/constants'
+import { getUsersRequest, getUserRequest } from '@/actions'
 import StandardLayout from '@/components/layouts/Standard'
 import UserCard from '@/components/blocks/UserCard'
 
 import Box from '@material-ui/core/Box'
 
 const Clubmates = () => {
-  const dispatch = useDispatch()
   const users = useSelector(state => state.users)
+  const dispatch = useDispatch()
+
+  // const auth = useSelector(state => state.firebase.auth)
 
   useEffect(() => {
     dispatch(getUsersRequest())
-  }, [dispatch])
+    // if (auth.isLoaded) dispatch(getUserRequest(auth.uid))
+  }, [])
+
+  // const user = useSelector(state => state.user)
+
+  // if (!user.name) {
+  //   return <Redirect to={FILLING_PROFILE_PATH} />
+  // }
 
   return (
     <StandardLayout>
