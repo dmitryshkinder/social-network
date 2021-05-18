@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import pt from 'prop-types'
-import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 import Chip from '@material-ui/core/Chip'
 import Box from '@material-ui/core/Box'
@@ -11,6 +11,22 @@ import Button from '@material-ui/core/Button'
 import Card from './styles'
 
 const UserCard = ({ user }) => {
+  const [redirected, setRedirect] = useState()
+
+  const openProfileHandler = () => {
+    setRedirect(state => !state)
+  }
+
+  if (redirected) {
+    return (
+      <Redirect
+        to={{
+          pathname: `/${user.id}`,
+          state: { user },
+        }} />
+    )
+  }
+
   return (
     <Box textAlign="left">
       <Card variant="outlined">
@@ -34,7 +50,9 @@ const UserCard = ({ user }) => {
               ))}
             </Box>
             <Box>
-              <Button color="primary">Открыть профиль</Button>
+              <Button onClick={openProfileHandler} color="primary">
+                Открыть профиль
+              </Button>
             </Box>
           </Box>
         </Box>

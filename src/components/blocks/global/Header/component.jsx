@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { HOME_PAGE_PATH } from '@/constants'
+import { HOME_PAGE_PATH, PROFILE_PATH } from '@/constants'
 
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -61,13 +61,15 @@ const Header = () => {
               onClose={onCloseMenuHandler}
             >
               <MenuItem>
-                <Link to={HOME_PAGE_PATH}>
-                  Настройки
-                </Link>
+                <Link to={PROFILE_PATH}>Профиль</Link>
               </MenuItem>
-              <MenuItem onClick={onSignOutHandler}>
-                Выйти
+              <MenuItem>
+                <Link to={HOME_PAGE_PATH}>Клуб</Link>
               </MenuItem>
+              {/* <MenuItem>
+                <Link to={HOME_PAGE_PATH}>Настройки</Link>
+              </MenuItem> */}
+              <MenuItem onClick={onSignOutHandler}>Выйти</MenuItem>
             </Menu>
           </div>
         </IconsContainer>
