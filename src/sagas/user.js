@@ -1,3 +1,5 @@
+import { nanoid } from 'nanoid'
+
 import { firestore } from '@/firebase'
 import { call, put, takeEvery } from 'redux-saga/effects'
 
@@ -50,6 +52,7 @@ async function createUserFunc ({
       telegram,
       twitter,
       vk,
+      id: nanoid(),
     })
     .then(() => createUserSuccess())
     .catch(error => console.log(error))

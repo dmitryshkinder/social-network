@@ -7,6 +7,7 @@ import {
   GET_USER_SUCCESS,
   GET_USERS_REQUEST,
   GET_USERS_SUCCESS,
+  CLEAR_USERS,
 } from '@/constants'
 
 export const createUserRequest = value => ({
@@ -47,4 +48,9 @@ export const getUsersRequest = () => ({
 export const getUsersSuccess = users => ({
   type: GET_USERS_SUCCESS,
   payload: users,
+})
+
+export const clearUsers = () => ({
+  type: CLEAR_USERS,
+  payload: null,
 })

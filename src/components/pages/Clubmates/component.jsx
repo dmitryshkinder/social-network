@@ -3,21 +3,23 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 import { FILLING_PROFILE_PATH } from '@/constants'
-import { getUsersRequest, getUserRequest } from '@/actions'
+import { getUsersRequest, getUserRequest, clearUsers } from '@/actions'
 import StandardLayout from '@/components/layouts/Standard'
 import UserCard from '@/components/blocks/UserCard'
 
 import Box from '@material-ui/core/Box'
 
-const Clubmates = () => {
+const Clubmates = React.memo(() => {
   const users = useSelector(state => state.users)
   const dispatch = useDispatch()
-
-  // const auth = useSelector(state => state.firebase.auth)
+  const auth = useSelector(state => state.firebase.auth)
+  dispatch(getUserRequest(auth.uid))
 
   useEffect(() => {
     dispatch(getUsersRequest())
-    // if (auth.isLoaded) dispatch(getUserRequest(auth.uid))
+    return function () {
+      dispatch(clearUsers())
+    }
   }, [])
 
   // const user = useSelector(state => state.user)
@@ -49,6 +51,6 @@ const Clubmates = () => {
       </>
     </StandardLayout>
   )
-}
+})
 
 export default Clubmates

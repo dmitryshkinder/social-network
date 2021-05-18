@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 import { signInEmailAuth, registerRequest } from '@/actions'
-import { HOME_PAGE_PATH } from '@/constants'
+import { HOME_PAGE_PATH, FILLING_PROFILE_PATH } from '@/constants'
 import RegisterForm from '@/components/forms/Register'
 import LoginForm from '@/components/forms/Login'
 
@@ -74,11 +74,13 @@ function AuthPage () {
         {isRegisterTypeForm ? (
           <RegisterForm
             onSwap={onSwapTypeForm}
-            onRegisterSubmitForm={onRegisterSubmitForm} />
+            onRegisterSubmitForm={onRegisterSubmitForm}
+          />
         ) : (
           <LoginForm
             onSwap={onSwapTypeForm}
-            onLoginSubmitForm={onLoginSubmitFormHandler} />
+            onLoginSubmitForm={onLoginSubmitFormHandler}
+          />
         )}
       </LeftContent>
     </Main>
